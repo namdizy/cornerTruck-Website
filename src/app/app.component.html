@@ -1,29 +1,25 @@
-<h3>
-  Angular 2 Seed
-</h3>
-<nav>
-	<a [routerLink]="['/']">
-    Home
-  </a>
-  |
-	<a [routerLink]="['/about']">
-    About
-  </a>
-  |
-	<a [routerLink]="['/github', 'angular']">
-    Github Repos
-  </a>
-  |
-	<a [routerLink]="['/contact']">
-    Contact Us
-  </a>
-</nav>
 
-<main>
-	<router-outlet></router-outlet>
-</main>
+<md-toolbar color="blue">
 
+  <!-- This fills the remaining space of the current row -->
+  <span class="app-toolbar-filler"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button md-button routerLink="/about">About</button>
+    <button md-button routerLink="/contact">Contact</button>
+  </div>
+  <button md-button [md-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <md-icon svgIcon="menu"></md-icon>
+  </button>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item routerLink="/products">Products</button>
+    <button md-menu-item routerLink="/dashboard">Dashboard</button>
+    <!--<button md-menu-item>Help</button>-->
+  </md-menu>
+</md-toolbar>
 
+<div class="app-content">
+  <router-outlet></router-outlet>
+</div>
 <footer>
   © 2016
 </footer>
